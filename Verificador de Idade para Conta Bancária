@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
+
+public class VerificadorElegibilidadeConta {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int idade = scanner.nextInt();
+        
+        int idadeElegivel = verificado();
+        
+        verificadorElegibilidadeConta(idade, idadeElegivel);
+
+        scanner.close();
+    }
+    
+    static int verificado() { 
+        return ThreadLocalRandom.current().nextInt(18, 60);
+    }
+        
+    static void verificadorElegibilidadeConta(int idade, int idadeElegivel) {
+        if (idade < 18) {
+            System.out.println("Voce nao esta elegivel para criar uma conta bancaria.");
+        } else {
+            System.out.println("Voce esta elegivel para criar uma conta bancaria.");
+        }
+    }
+}
