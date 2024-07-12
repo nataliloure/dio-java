@@ -1,0 +1,36 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class VerificadorNumeroConta {
+
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String linha = br.readLine();
+            StringTokenizer st = new StringTokenizer(linha);
+
+            // Supondo que o primeiro token seja o número da conta
+            String numeroConta = st.nextToken();
+
+            // Chamar o método que verifica se o número da conta é válido
+            verificarNumeroConta(numeroConta);
+
+            // Caso nenhuma exceção seja lançada, imprime a mensagem de sucesso.
+            System.out.println("Numero de conta valido.");
+        } catch (IllegalArgumentException e) {
+            // Informar que o número de conta é inválido e exibir a mensagem de erro
+            System.out.println("Erro: " + e.getMessage());
+        } catch (Exception e) {
+            // Captura quaisquer outras exceções que possam ocorrer
+            System.out.println("Erro: Ocorreu um erro inesperado.");
+        }
+    }
+
+    private static void verificarNumeroConta(String numeroConta) {
+        if (numeroConta.length() != 8) {
+            // Lançar uma IllegalArgumentException com a mensagem especificada
+            throw new IllegalArgumentException("Numero de conta invalido. Digite exatamente 8 digitos.");
+        }
+    }
+}
